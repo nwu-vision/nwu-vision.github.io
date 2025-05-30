@@ -1,1 +1,1 @@
-# nwu-vision.github.io
+# NWU Computer Vision Lab
