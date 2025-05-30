@@ -1,1 +1,82 @@
-Hello world
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meng-Yu Jennifer Kuo's Lab</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="language.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="returnToOverview();">Overview</a></li>
+                <li><a href="member.html">Members</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <!-- <li><a href="#contact">Contact</a></li>-->
+            </ul>
+        </nav>
+        <div class="language-switcher">
+            <a href="#" onclick="switchLanguage('en', event);">English</a> |
+            <a href="#" onclick="switchLanguage('ja', event);">日本語</a>
+        </div>
+    </header>
+
+    <div class="animation-wrapper">
+        <div class="slides">
+            <video autoplay muted playsinline class="slide">
+                <source src="snsfw_fish.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <img src="farm_robot.png" class="slide" alt="Farmer Robot Image">
+            <img src="art3d.png" class="slide" alt="Art 3D Image">
+        </div>
+        <div class="controls">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+        <p id="dynamicVisualization" class="overlay-text">Hello World!</p>
+    </div>
+
+
+    <div id="content-wrapper">
+        <!-- Latest News Section -->
+        <div id="news">
+            <h2>News</h2>
+            <ul>
+                <li>
+                    <span class="news-date"><strong>✦ June, 2025</strong></span>
+                    <span class="news-text">Officially launched the lab!</span>
+                </li>
+                <!-- Repeat for other news items -->
+            </ul>
+        </div>
+        <!-- PI Introduction Section -->
+        <section id="pi-introduction">
+            <img src="profile.png" alt="Meng-Yu Jennifer Kuo">
+            <div>
+                <h2 id="piName">PI: Meng-Yu Jennifer Kuo</h2>
+                <p id="piRole">Assistant Professor</p>
+                <p id="piMail">📩: <a href="mailto:myjkuo@ics.nara-wu.ac.jp">myjkuo@ics.nara-wu.ac.jp</a></p>
+            </div>
+        </section>
+    </div>
+    
+        
+    <!-- <main>
+        <section id="pi-introduction">
+            <img src="profile.png" alt="Meng-Yu Jennifer Kuo">
+            <div>
+                <h2 id="piName">PI: Meng-Yu Jennifer Kuo</h2>
+                <p id="piRole">Assistant Professor.</p>
+            </div>
+        </section>
+    </main> -->
+    <footer>
+      <p>&copy; 2025~ Meng-Yu Jennifer Kuo's Lab, Nara Women's University. All rights reserved.</p>
+    </footer>
+</body>
+</html>
