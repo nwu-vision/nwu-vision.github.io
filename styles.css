@@ -250,7 +250,7 @@ nav ul li a:hover {
   background-color: transparent !important; /* Force override */
   box-shadow: none !important; /* Remove shadow */
   border-radius: 0 !important; /* Remove rounded corners */
-  margin-top: -40px;
+  margin-top: 0px;
   /*margin: 0 !important;  Remove margins */
   /*padding: 0 !important;  Remove padding */
 }
@@ -287,10 +287,20 @@ nav ul li a:hover {
 }
 
 .language-switcher a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center; /* Vertically center the text */
+  color: #333;
+  text-decoration: none;
+  padding: 10px 10px; /* Increase vertical padding for easier tapping */
+  line-height: 1.5;   /* Good line height for touch devices */
+}
+
+/* .language-switcher a {
   color: #333;
   text-decoration: none;
   padding: 0 10px;
-}
+} */
 
 .language-switcher a:hover {
   text-decoration: underline;
