@@ -51,6 +51,39 @@ nav ul li a:hover {
 }
 
 /* -------------------------------------------- */
+/* Mobile hamburger menu */
+.hamburger {
+  display: none;
+  font-size: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin: 10px;
+}
+
+/* Responsive nav */
+@media (max-width: 768px) {
+  nav ul.nav-links {
+    display: none; /* Hide menu by default on small screens */
+    flex-direction: column;
+    align-items: center;
+    background-color: white; /* Or your desired background */
+    position: absolute;
+    top: 60px; /* Below header */
+    right: 0;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+
+  nav ul.nav-links.show {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block; /* Show hamburger on small screens */
+  }
+}
+/* -------------------------------------------- */
 /* Animation wrapper, Slide show */
 
 .animation-wrapper {

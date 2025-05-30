@@ -109,7 +109,10 @@ function handleMediaContent(currentSlide) {
     }
 }
 
-
+function toggleMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.classList.toggle('show');
+}
 
 // Remove the automatic change every 4 seconds
 // setInterval(function() {
