@@ -73,6 +73,7 @@ nav ul li a:hover {
     right: 0;
     width: 100%;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 1000; /* ensure nav links appear above other content */
   }
 
   nav ul.nav-links.show {
@@ -286,13 +287,14 @@ nav ul li a:hover {
 /* -------------------------------------------- */
 #research {
   max-width: 1000px;
-  display: flex;
+  display: block;
   justify-content: center;
   background-color: transparent;
+  text-align: center;
 }
 
 #research img {
-  display: block;
+  display: inline-block;
   margin: 0 auto;
   max-width: 90%;
   height: auto;
