@@ -135,14 +135,14 @@ nav ul li a:hover {
 }
 
 
-section {
+/* section {
     background-color: white;
     margin: 20px auto;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     max-width: 800px;
-}
+} */
 
 /* -------------------------------------------- */
 /* News & Profile */
@@ -186,6 +186,33 @@ section {
   display: inline-block;
   margin-right: 10px; /* Ensure there is enough space between the date and the text */
 }
+
+@media (max-width: 768px) {
+  section, #content-wrapper {
+    max-width: 95%;
+    margin: 10px auto;
+    padding: 10px;
+  }
+
+  #pi-introduction {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  #pi-introduction img {
+    width: 120px;
+  }
+
+  main {
+    padding: 20px 10px;
+  }
+
+  .animation-wrapper {
+    min-height: 300px; /* Smaller for small screens */
+  }
+}
+
 
 #pi-introduction {
   display: flex;
