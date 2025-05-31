@@ -3,12 +3,12 @@ const langData = {
     'en': {
         'dynamicVisualization': "Hello World!",
         'piName': "PI: Meng-Yu Jennifer Kuo",
-        'piRole': "Assistant Professor",
+        'piRole': "Assistant Professor, Ph.D. in Informatics",
     },
     'ja': {
         'dynamicVisualization': "こんにちは",
         'piName': "PI: Meng-Yu Jennifer Kuo",
-        'piRole': "助教",
+        'piRole': "助教、博士（情報学）",
     }
 };
 
