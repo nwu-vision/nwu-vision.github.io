@@ -1,7 +1,7 @@
 // Language data
 const langData = {
     'en': {
-        'dynamicVisualization': "Computer Vision Lab @ NWU",
+        'dynamicVisualization': "Computer Vision Lab @ Nara Women's University",
         'piName': "PI: Meng-Yu Jennifer Kuo",
         'piRole': "Assistant Professor, Ph.D. in Informatics",
         'piPlace': "Nara Women's University",
