@@ -1,14 +1,16 @@
 // Language data
 const langData = {
     'en': {
-        'dynamicVisualization': "Hello World!",
+        'dynamicVisualization': "Computer Vision Lab",
         'piName': "PI: Meng-Yu Jennifer Kuo",
         'piRole': "Assistant Professor, Ph.D. in Informatics",
+        'piPlace': "Nara Women's University",
     },
     'ja': {
-        'dynamicVisualization': "こんにちは",
+        'dynamicVisualization': "コンピュータビジョン研究室",
         'piName': "PI: Meng-Yu Jennifer Kuo",
         'piRole': "助教、博士（情報学）",
+        'piPlace': "奈良女子大学",
     }
 };
 
@@ -25,11 +27,13 @@ function updateContent(lang) {
     const dynamicVisualization = document.getElementById('dynamicVisualization');
     const piName = document.getElementById('piName');
     const piRole = document.getElementById('piRole');
+    const piPlace = document.getElementById('piPlace');
 
-    if(dynamicVisualization && piName && piRole) {
+    if(dynamicVisualization && piName && piRole && piPlace) {
         dynamicVisualization.textContent = langData[lang]['dynamicVisualization'];
         piName.textContent = langData[lang]['piName'];
         piRole.textContent = langData[lang]['piRole'];
+        piPlace.textContent = langData[lang]['piPlace'];
     }
 
     // New: Update the research image based on language
