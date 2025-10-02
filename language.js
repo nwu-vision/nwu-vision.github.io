@@ -40,9 +40,9 @@ function updateContent(lang) {
     const researchImage = document.getElementById('researchImage');
     if (researchImage) {
         if (lang === 'ja') {
-            researchImage.src = 'assets/images/lab_intro_ja.png'; // Your Japanese image path
+            researchImage.src = 'assets/images/lab_intro_ja.png'; // Japanese image path
         } else {
-            researchImage.src = 'assets/images/lab_intro_en.png'; // Your English image path
+            researchImage.src = 'assets/images/lab_intro_en.png'; // English image path
         }
     }
 }
