@@ -3,13 +3,13 @@ const langData = {
     'en': {
         'dynamicVisualization': "Computer Vision Lab @ Nara Women's University",
         'piName': "PI: Meng-Yu Jennifer Kuo",
-        'piRole': "Assistant Professor | Ph.D. in Informatics, Kyoto University (2021)",
+        'piRole': "Assistant Professor | Ph.D. in Informatics, Kyoto University",
         'piPlace': "Nara Women's University",
     },
     'ja': {
         'dynamicVisualization': "コンピュータビジョン研究室",
         'piName': "PI: Meng-Yu Jennifer Kuo",
-        'piRole': "助教｜博士（情報学）（京都大学 2021年9月）",
+        'piRole': "助教｜博士（情報学）（京都大学）",
         'piPlace': "奈良女子大学",
     }
 };
