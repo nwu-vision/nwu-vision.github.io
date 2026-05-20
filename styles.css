@@ -709,27 +709,41 @@ footer p { margin: 0; }
 
 @media (max-width: 768px) {
   .header-inner {
-    padding: 14px 20px;
-    flex-wrap: wrap;
+    padding: 12px 16px;
+    flex-wrap: nowrap;
     gap: var(--space-2);
     position: relative;
   }
 
   /* Row 1: brand on left, then language switcher and hamburger on the right */
-  .brand { order: 1; margin-right: auto; }
+  .brand {
+    order: 1;
+    margin-right: auto;
+    min-width: 0;
+    flex: 0 1 auto;
+  }
+
+  .brand-name { font-size: 16px; }
+  .brand-sub  { font-size: 9px; letter-spacing: 0.1em; }
 
   .language-switcher {
     order: 2;
-    font-size: 10px;
+    font-size: 11px;
+    flex: 0 0 auto;
+    gap: 6px;
   }
+
+  .language-switcher a { padding: 6px 2px; }
 
   nav {
     order: 3;
     display: flex;
     align-items: center;
+    flex: 0 0 auto;
+    gap: 0;
   }
 
-  .hamburger { display: flex; }
+  .hamburger { display: flex; width: 32px; height: 32px; padding: 6px; }
 
   /* Row 2: dropdown menu drops below the entire header row when toggled */
   nav ul.nav-links {
