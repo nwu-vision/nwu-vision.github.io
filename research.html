@@ -2,42 +2,62 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Research - NWU Computer Vision Lab</title>
+  <title>Research — Computer Vision Lab, Nara Women's University</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Research areas at the Computer Vision Lab, NWU: 3D vision, computational photography, and AI for arts and agriculture.">
+  <link rel="icon" href="assets/images/teaser.png" type="image/png">
   <link rel="stylesheet" href="styles.css">
   <script src="language.js" defer></script>
-  </style>
 </head>
 <body>
 
-  <!-- Same header/nav as index.html -->
   <header>
-    <nav>
-      <button class="hamburger" onclick="toggleMenu()">☰</button>
-      <ul class="nav-links">
-            <li><a href="index.html">Overview</a></li>
-            <li><a href="member.html">Members</a></li>
-            <li><a href="#" onclick="returnToResearch();">Research</a></li>
-            <li><a href="publications.html">Publications</a></li>
-            <!-- <li><a href="#contact">Contact</a></li>-->
-     </ul>
-    </nav>
-    <div class="language-switcher">
-        <a href="#" onclick="switchLanguage('en', event);">English</a> |
-        <a href="#" onclick="switchLanguage('ja', event);">日本語</a>
+    <div class="header-inner">
+      <a href="index.html" class="brand">
+          <span class="brand-name" id="brandName">Computer Vision Lab</span>
+          <span class="brand-sub"  id="brandSub">Nara Women's University</span>
+      </a>
+      <nav>
+          <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+              <span></span><span></span><span></span>
+          </button>
+          <ul class="nav-links">
+              <li><a href="index.html"        id="navOverview">Overview</a></li>
+              <li><a href="member.html"       id="navMembers">Members</a></li>
+              <li><a href="research.html"     id="navResearch"     class="active">Research</a></li>
+              <li><a href="publications.html" id="navPublications">Publications</a></li>
+          </ul>
+          <div class="language-switcher">
+              <a href="#" data-lang="en" onclick="switchLanguage('en', event);">EN</a>
+              <span class="sep">/</span>
+              <a href="#" data-lang="ja" onclick="switchLanguage('ja', event);">日本語</a>
+          </div>
+      </nav>
     </div>
   </header>
 
   <main>
+    <div class="content">
 
-      <section id="research">
-        <img id="researchImage" src="assets/images/lab_intro_en.png" alt="Research Overview">
+      <section class="research-hero">
+        <div class="section-label" id="researchLabel">What we work on</div>
+        <p class="lead"            id="researchLead">We work at the intersection of 3D vision, computational photography, and applied AI — building systems that see, measure, and reconstruct the physical world.</p>
       </section>
 
+    </div>
+
+    <div class="container research-figure-container">
+      <section class="research-areas">
+        <figure class="research-image-wrap">
+          <img id="researchImage" src="assets/images/lab_intro_en.png" alt="Research Overview">
+          <figcaption class="research-caption" id="researchCaption">Research areas — overview diagram</figcaption>
+        </figure>
+      </section>
+    </div>
   </main>
 
   <footer>
-    <p>© 2025~ Meng-Yu Jennifer Kuo's Lab, Nara Women's University. All rights reserved.</p>
+    <p>&copy; 2025~ Meng-Yu Jennifer Kuo's Lab, Nara Women's University. All rights reserved.</p>
   </footer>
 
 </body>

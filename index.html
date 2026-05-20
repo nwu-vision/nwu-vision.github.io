@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Computer Vision Lab - Nara Women's University</title>
+    <title>Computer Vision Lab — Nara Women's University</title>
     <meta name="description" content="The Computer Vision Lab at Nara Women's University, led by Assistant Professor Meng-Yu Jennifer Kuo, explores 3D vision, computational photography, and AI for arts and agriculture.">
     <link rel="icon" href="assets/images/teaser.png" type="image/png">
     <link rel="canonical" href="https://nwu-vision.github.io/">
@@ -25,25 +25,32 @@
     }
     </script>
 
-
     <link rel="stylesheet" href="styles.css">
     <script src="language.js" defer></script>
 </head>
 <body>
     <header>
-        <nav>
-            <button class="hamburger" onclick="toggleMenu()">☰</button>
-            <ul class="nav-links">
-                <li><a href="#" onclick="returnToOverview();">Overview</a></li>
-                <li><a href="member.html">Members</a></li>
-                <li><a href="research.html">Research</a></li>
-                <li><a href="publications.html">Publications</a></li>
-                <!-- <li><a href="#contact">Contact</a></li>-->
-            </ul>
-        </nav>
-        <div class="language-switcher">
-            <a href="#" onclick="switchLanguage('en', event);">English</a> |
-            <a href="#" onclick="switchLanguage('ja', event);">日本語</a>
+        <div class="header-inner">
+            <a href="index.html" class="brand">
+                <span class="brand-name" id="brandName">Computer Vision Lab</span>
+                <span class="brand-sub"  id="brandSub">Nara Women's University</span>
+            </a>
+            <nav>
+                <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="index.html"        id="navOverview"     class="active">Overview</a></li>
+                    <li><a href="member.html"       id="navMembers">Members</a></li>
+                    <li><a href="research.html"     id="navResearch">Research</a></li>
+                    <li><a href="publications.html" id="navPublications">Publications</a></li>
+                </ul>
+                <div class="language-switcher">
+                    <a href="#" data-lang="en" onclick="switchLanguage('en', event);">EN</a>
+                    <span class="sep">/</span>
+                    <a href="#" data-lang="ja" onclick="switchLanguage('ja', event);">日本語</a>
+                </div>
+            </nav>
         </div>
     </header>
 
@@ -53,42 +60,60 @@
                 <source src="assets/snsfw_fish.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
-            <img src="assets/images/farm_robot.png" class="slide" alt="Farmer Robot Image">
-            <img src="assets/images/art3d.png" class="slide" alt="Art 3D Image">
+            <img src="assets/images/farm_robot.png" class="slide" alt="Agricultural robot in the field">
+            <img src="assets/images/art3d.png"     class="slide" alt="3D reconstruction of an art piece">
         </div>
+
+        <!-- Viewfinder brackets -->
+        <span class="bracket tl"></span>
+        <span class="bracket tr"></span>
+        <span class="bracket bl"></span>
+        <span class="bracket br"></span>
+
+        <!-- Coordinate stamp (Nara, JP) -->
+        <div class="geo-stamp">34.6817° N · 135.8048° E<br>NARA · JP</div>
+
+        <!-- Editorial overlay -->
+        <div class="hero-overlay">
+            <div class="hero-meta" id="heroMeta">01 / 03 · UNDERWATER VISION</div>
+        </div>
+
+        <!-- Slide progress bars -->
         <div class="controls">
             <span class="dot" onclick="currentSlide(1)"></span>
             <span class="dot" onclick="currentSlide(2)"></span>
             <span class="dot" onclick="currentSlide(3)"></span>
         </div>
-        <p id="dynamicVisualization" class="overlay-text">Computer Vision Lab @ Nara Women's University</p>
     </div>
 
+    <main>
+        <div class="content">
+            <!-- News -->
+            <section id="news">
+                <h2 class="news-title" id="newsTitle">News</h2>
+                <ul class="news-list" id="newsList">
+                    <li>
+                        <span class="news-date">OCT 2025</span>
+                        <span class="news-text">Officially launched the lab.</span>
+                    </li>
+                </ul>
+            </section>
 
-    <div id="content-wrapper">
-        <!-- Latest News Section -->
-        <div id="news">
-            <h2>News</h2>
-            <ul>
-                <li>
-                    <span class="news-date"><strong>✦ Oct., 2025</strong></span>
-                    <span class="news-text">Officially launched the lab!</span>
-                </li>
-                <!-- Repeat for other news items -->
-            </ul>
+            <!-- PI Introduction -->
+            <section id="pi-introduction">
+                <div class="pi-photo-wrap">
+                    <img src="assets/images/profile/profile.png" alt="Meng-Yu Jennifer Kuo">
+                </div>
+                <div class="pi-info">
+                    <div class="pi-label" id="piLabel">Principal Investigator</div>
+                    <h2 id="piName">Meng-Yu Jennifer Kuo</h2>
+                    <p class="pi-meta"  id="piRole">Assistant Professor · Ph.D. in Informatics, Kyoto University</p>
+                    <p class="pi-meta"  id="piPlace">Nara Women's University, Japan</p>
+                    <p class="pi-mail">✉ <a href="mailto:myjkuo@ics.nara-wu.ac.jp">myjkuo@ics.nara-wu.ac.jp</a></p>
+                </div>
+            </section>
         </div>
-        <!-- PI Introduction Section -->
-        <section id="pi-introduction">
-            <img src="assets/images/profile/profile.png" alt="Meng-Yu Jennifer Kuo">
-            <div>
-                <h2 id="piName">PI: Meng-Yu Jennifer Kuo</h2>
-                <p id="piRole">Assistant Professor | Ph.D. in Informatics, Kyoto University</p>
-                <p id="piPlace">Nara Women's University</p>
-                <!-- <a href="https://narajo.info/"></a> -->
-                <p id="piMail">📩: <a href="mailto:myjkuo@ics.nara-wu.ac.jp">myjkuo@ics.nara-wu.ac.jp</a></p>
-            </div>
-        </section>
-    </div>
+    </main>
 
     <footer>
       <p>&copy; 2025~ Meng-Yu Jennifer Kuo's Lab, Nara Women's University. All rights reserved.</p>

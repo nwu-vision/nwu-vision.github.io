@@ -2,40 +2,55 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Publications - NWU Computer Vision Lab</title>
+  <title>Publications — Computer Vision Lab, Nara Women's University</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Publications from the Computer Vision Lab at Nara Women's University.">
+  <link rel="icon" href="assets/images/teaser.png" type="image/png">
   <link rel="stylesheet" href="styles.css">
   <script src="language.js" defer></script>
 </head>
 <body>
 
   <header>
-    <nav>
-        <button class="hamburger" onclick="toggleMenu()">☰</button>
-        <ul class="nav-links">
-            <li><a href="index.html">Overview</a></li>
-            <li><a href="member.html">Members</a></li>
-            <li><a href="research.html">Research</a></li>
-            <li><a href="#" onclick="returnToPublications();">Publications</a></li>
-            <!-- <li><a href="#contact">Contact</a></li>-->
-        </ul>
-    </nav>
-    <div class="language-switcher">
-        <a href="#" onclick="switchLanguage('en', event);">English</a> |
-        <a href="#" onclick="switchLanguage('ja', event);">日本語</a>
+    <div class="header-inner">
+      <a href="index.html" class="brand">
+          <span class="brand-name" id="brandName">Computer Vision Lab</span>
+          <span class="brand-sub"  id="brandSub">Nara Women's University</span>
+      </a>
+      <nav>
+          <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+              <span></span><span></span><span></span>
+          </button>
+          <ul class="nav-links">
+              <li><a href="index.html"        id="navOverview">Overview</a></li>
+              <li><a href="member.html"       id="navMembers">Members</a></li>
+              <li><a href="research.html"     id="navResearch">Research</a></li>
+              <li><a href="publications.html" id="navPublications" class="active">Publications</a></li>
+          </ul>
+          <div class="language-switcher">
+              <a href="#" data-lang="en" onclick="switchLanguage('en', event);">EN</a>
+              <span class="sep">/</span>
+              <a href="#" data-lang="ja" onclick="switchLanguage('ja', event);">日本語</a>
+          </div>
+      </nav>
     </div>
   </header>
 
   <main>
-    <div id="content-wrapper">
-      <section id="publications">
-        <p>TBD</p>
-    </section>
-  </div>
+    <div class="content">
+
+      <section class="pub-placeholder">
+        <div class="pub-empty">
+          <span class="pub-empty-title" id="pubEmptyTitle">Coming soon</span>
+        </div>
+      </section>
+
+    </div>
   </main>
 
-      <footer>
-      <p>&copy; 2025~ Meng-Yu Jennifer Kuo's Lab, Nara Women's University. All rights reserved.</p>
-    </footer>
+  <footer>
+    <p>&copy; 2025~ Meng-Yu Jennifer Kuo's Lab, Nara Women's University. All rights reserved.</p>
+  </footer>
+
 </body>
 </html>

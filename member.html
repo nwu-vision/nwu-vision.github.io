@@ -2,79 +2,111 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Lab Members - NWU Computer Vision Lab</title>
+  <title>Members — Computer Vision Lab, Nara Women's University</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Lab members of the Computer Vision Lab at Nara Women's University.">
+  <link rel="icon" href="assets/images/teaser.png" type="image/png">
   <link rel="stylesheet" href="styles.css">
   <script src="language.js" defer></script>
 </head>
 <body>
 
   <header>
-    <nav>
-        <button class="hamburger" onclick="toggleMenu()">☰</button>
-        <ul class="nav-links">
-            <li><a href="index.html">Overview</a></li>
-            <li><a href="#" onclick="returnToMembers();">Members</a></li>
-            <li><a href="research.html">Research</a></li>
-            <li><a href="publications.html">Publications</a></li>
-            <!-- <li><a href="#contact">Contact</a></li>-->
-        </ul>
-    </nav>
-    <div class="language-switcher">
-        <a href="#" onclick="switchLanguage('en', event);">English</a> |
-        <a href="#" onclick="switchLanguage('ja', event);">日本語</a>
+    <div class="header-inner">
+      <a href="index.html" class="brand">
+          <span class="brand-name" id="brandName">Computer Vision Lab</span>
+          <span class="brand-sub"  id="brandSub">Nara Women's University</span>
+      </a>
+      <nav>
+          <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+              <span></span><span></span><span></span>
+          </button>
+          <ul class="nav-links">
+              <li><a href="index.html"        id="navOverview">Overview</a></li>
+              <li><a href="member.html"       id="navMembers"      class="active">Members</a></li>
+              <li><a href="research.html"     id="navResearch">Research</a></li>
+              <li><a href="publications.html" id="navPublications">Publications</a></li>
+          </ul>
+          <div class="language-switcher">
+              <a href="#" data-lang="en" onclick="switchLanguage('en', event);">EN</a>
+              <span class="sep">/</span>
+              <a href="#" data-lang="ja" onclick="switchLanguage('ja', event);">日本語</a>
+          </div>
+      </nav>
     </div>
   </header>
 
   <main>
-    <div id="content-wrapper">
-      <p>We are actively recruiting undergraduate and graduate students to join our lab! ✦</p>
+    <div class="content">
+
+      <section class="page-intro">
+        <p class="lead"            id="membersLead">We are actively recruiting undergraduate and graduate students to join our lab! ✦</p>
+      </section>
+
       <section id="members">
-        
-      <!-- Graduate Students -->
-      <!-- <h3 class="member-section-title">Graduate Students</h3>
-      <div class="member-list">
-        <div class="member">
-         
-        </div>
-      </div> -->
 
-    <!-- Undergraduate Students -->
-    <h3 class="member-section-title">Undergraduate Students</h3>
-    <div class="member-list">
-      <div class="member">
-        <div class="member-photo-container">
-          <img src="assets/images/profile/horiba.jpeg" alt="Student 4" class="member-photo">
-          <p class="member-name-en">Misaki Horiba</p>
-          <p class="member-name-ja">堀場 光咲</p>
+        <!-- Graduate Students (placeholder for later)
+        <h2 class="member-section-title" data-count="00">Graduate Students</h2>
+        <div class="member-grid">
+        </div>
+        -->
+
+        <!-- Undergraduate Students -->
+        <h2 class="member-section-title" id="undergradTitle">Undergraduate Students</h2>
+        <div class="member-grid">
+
+          <div class="member-card">
+            <div class="member-photo-wrap">
+              <span class="member-index">01</span>
+              <img src="assets/images/profile/horiba.jpeg" alt="Misaki Horiba">
+            </div>
+            <div class="member-info">
+              <p class="member-name-en">Misaki Horiba</p>
+              <p class="member-name-ja">堀場 光咲</p>
+            </div>
+          </div>
+
+          <div class="member-card">
+            <div class="member-photo-wrap">
+              <span class="member-index">02</span>
+              <img src="assets/images/profile/shinbo.jpg" alt="Hinano Shimbo">
+            </div>
+            <div class="member-info">
+              <p class="member-name-en">Hinano Shimbo</p>
+              <p class="member-name-ja">新保 日菜乃</p>
+            </div>
+          </div>
+
+          <div class="member-card">
+            <div class="member-photo-wrap">
+              <span class="member-index">03</span>
+              <img src="assets/images/profile/onoda.jpg" alt="Yuri Onoda">
+            </div>
+            <div class="member-info">
+              <p class="member-name-en">Yuri Onoda</p>
+              <p class="member-name-ja">小野田 百合</p>
+            </div>
+          </div>
+
+          <div class="member-card">
+            <div class="member-photo-wrap">
+              <span class="member-index">04</span>
+              <img src="assets/images/profile/akaji.jpg" alt="Miu Akaji">
+            </div>
+            <div class="member-info">
+              <p class="member-name-en">Miu Akaji</p>
+              <p class="member-name-ja">赤地 実有</p>
+            </div>
+          </div>
 
         </div>
-        <div class="member-photo-container">
-          <img src="assets/images/profile/shinbo.jpg" alt="Student 2" class="member-photo">
-          <p class="member-name-en">Hinano Shimbo</p>
-          <p class="member-name-ja">新保 日菜乃</p>
-        </div>
 
-        <div class="member-photo-container">
-          <img src="assets/images/profile/onoda.jpg" alt="Student 1" class="member-photo">
-          <p class="member-name-en">Yuri Onoda</p>
-          <p class="member-name-ja">小野田 百合</p>
-        </div>
-
-        <div class="member-photo-container">
-          <img src="assets/images/profile/akaji.jpg" alt="Student 3" class="member-photo">
-          <p class="member-name-en">Miu Akaji</p>
-          <p class="member-name-ja">赤地 実有</p>
-        </div>
-      </div>
+      </section>
     </div>
-      
-    </section>
-  </div>
   </main>
 
   <footer>
-    <p>© 2025~ Meng-Yu Jennifer Kuo's Lab, Nara Women's University. All rights reserved.</p>
+    <p>&copy; 2025~ Meng-Yu Jennifer Kuo's Lab, Nara Women's University. All rights reserved.</p>
   </footer>
 
 </body>
