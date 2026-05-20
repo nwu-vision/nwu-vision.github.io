@@ -59,7 +59,7 @@ const langData = {
       { date: "2025年10月", text: "研究室を正式に立ち上げました。" }
     ],
     'membersLead':     "学部生・大学院生を積極的に募集しています！ ✦",
-    'undergradTitle':  "学部学生",
+    'undergradTitle':  "学部",
     'researchLabel':   "研究内容",
     'researchLead':    "3Dビジョン、コンピュテーショナルフォトグラフィ、応用AIの境界領域で、物理世界を「見て・測り・再構成する」システムを構築しています。",
     'researchCaption': "研究領域 — 概要図",
