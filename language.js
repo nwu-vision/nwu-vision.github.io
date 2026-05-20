@@ -23,8 +23,8 @@ const langData = {
     'newsTitle':       "News",
     'piLabel':         "Principal Investigator",
     'piName':          "Meng-Yu Jennifer Kuo",
-    'piRole':          "Assistant Professor · Ph.D. in Informatics (Kyoto University)",
-    'piPlace':         "Nara Women's University, Japan",
+    'piRole':          "Ph.D. in Informatics (Kyoto University)",
+    'piPlace':         "Assistant Professor · Nara Women's University, Japan",
     'newsItems': [
       { date: "OCT 2025", text: "Officially launched the lab!" }
     ],
@@ -53,8 +53,8 @@ const langData = {
     'newsTitle':       "ニュース",
     'piLabel':         "研究室代表者",
     'piName':          "Meng-Yu Jennifer Kuo",
-    'piRole':          "助教 ・ 博士（京都大学・情報学）",
-    'piPlace':         "奈良女子大学",
+    'piRole':          "博士（京都大学・情報学）",
+    'piPlace':         "助教 ・ 奈良女子大学",
     'newsItems': [
       { date: "2025年10月", text: "研究室を正式に立ち上げました。" }
     ],
