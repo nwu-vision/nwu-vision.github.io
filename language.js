@@ -33,7 +33,7 @@ const langData = {
     'undergradTitle':  "Undergraduate Students",
     // Research page
     'researchLabel':   "What we work on",
-    'researchLead':    "We work at the intersection of 3D vision, computational photography, and applied AI — building systems that see, measure, and reconstruct the physical world.",
+    'researchLead':    "We work at the intersection of 3D vision, computational photography, and applied AI — building systems that see, measure, and understand the physical world.",
     'researchCaption': "Research areas — overview diagram",
     // Publications page
     'pubEmptyTitle':   "TBD"
@@ -61,7 +61,7 @@ const langData = {
     'membersLead':     "学部生・大学院生を積極的に募集しています！ ✦",
     'undergradTitle':  "学部",
     'researchLabel':   "研究内容",
-    'researchLead':    "3Dビジョン、コンピュテーショナルフォトグラフィ、応用AIの境界領域で、物理世界を「見て・測り・再構成する」システムを構築しています。",
+    'researchLead':    "3Dビジョン、コンピュテーショナルフォトグラフィ、応用AIの境界領域で、物理世界を「見て・再構成・理解する」システムを構築しています。",
     'researchCaption': "研究領域 — 概要図",
     'pubEmptyTitle':   "TBD"
   }
