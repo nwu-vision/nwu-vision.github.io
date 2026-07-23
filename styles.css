@@ -535,6 +535,11 @@ section { padding: var(--space-6) 0; }
   gap: var(--space-5) var(--space-3);
 }
 
+/* Space between consecutive member groups */
+.member-grid + .member-grid {
+  margin-top: var(--space-6);
+}
+
 .member-card {
   display: flex;
   flex-direction: column;
@@ -797,6 +802,10 @@ footer p { margin: 0; }
   .member-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-3) var(--space-2);
+  }
+
+  .member-grid + .member-grid {
+    margin-top: var(--space-5);
   }
 }
 
