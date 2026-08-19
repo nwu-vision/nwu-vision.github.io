@@ -662,6 +662,132 @@ section { padding: var(--space-6) 0; }
   display: block;
 }
 
+/* Publication list — teaser + entry */
+#publications { padding: var(--space-2) 0 var(--space-6); }
+
+.pub-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pub-item {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: var(--space-4);
+  padding: var(--space-4) 0;
+  border-top: 1px solid var(--mist);
+  align-items: start;
+}
+
+.pub-item:last-child { border-bottom: 1px solid var(--mist); }
+
+/* Teaser media */
+.pub-media {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #fff;
+}
+
+.pub-media img,
+.pub-media video {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.8s var(--ease);
+}
+
+.pub-item:hover .pub-media img,
+.pub-item:hover .pub-media video { transform: scale(1.03); }
+
+/* Entry body */
+.pub-tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.pub-title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 19px;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  margin: 0 0 8px;
+}
+
+.pub-authors {
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--graphite);
+  line-height: 1.55;
+}
+
+.pub-me { color: var(--ink); font-weight: 600; }
+
+.pub-venue {
+  font-family: var(--sans);
+  font-style: italic;
+  font-size: 13.5px;
+  color: var(--slate);
+  line-height: 1.55;
+  margin-top: 4px;
+}
+
+/* Oral / acceptance rate / best paper highlights */
+.pub-note {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--graphite);
+}
+
+/* A second venue for the same paper (e.g. journal + conference version) */
+.pub-alt {
+  margin-top: var(--space-2);
+  padding-top: var(--space-2);
+  border-top: 1px dashed var(--mist);
+}
+
+.pub-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: 12px;
+}
+
+.pub-links a {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--graphite);
+  padding: 3px 10px;
+  border: 1px solid var(--mist);
+  transition: color 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+
+.pub-links a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+@media (max-width: 768px) {
+  .pub-item {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+    padding: var(--space-3) 0;
+  }
+
+  .pub-media { aspect-ratio: auto; }
+  .pub-title { font-size: 17px; }
+}
+
 /* ---------- Footer (kept blue per request) ---------- */
 footer {
   flex-shrink: 0;
