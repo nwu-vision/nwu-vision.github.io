@@ -13,6 +13,7 @@ const langData = {
     'navMembers':      "Members",
     'navResearch':     "Research",
     'navPublications': "Publications",
+    'navMisc':         "Misc",
     // Hero slides — meta labels sync with slide index
     'heroSlides': [
       { meta: "01 / 03 · UNDERWATER VISION" },
@@ -36,7 +37,10 @@ const langData = {
     'researchLead':    "We work at the intersection of 3D vision, computational photography, and applied AI — building systems that see, measure, and understand the physical world.",
     'researchCaption': "Research areas — overview diagram",
     // Publications page
-    'pubEmptyTitle':   "TBD"
+    'pubEmptyTitle':   "TBD",
+    // Misc page
+    'miscLabel':       "Videos",
+    'miscLead':        "Short videos about life and research in the lab."
   },
   'ja': {
     'brandName':       "コンピュータビジョン研究室",
@@ -45,6 +49,7 @@ const langData = {
     'navMembers':      "メンバー",
     'navResearch':     "研究",
     'navPublications': "業績",
+    'navMisc':         "その他",
     'heroSlides': [
       { meta: "01 / 03 · 水中ビジョン" },
       { meta: "02 / 03 · 農業デジタルツイン" },
@@ -63,7 +68,9 @@ const langData = {
     'researchLabel':   "研究内容",
     'researchLead':    "3Dビジョン、コンピュテーショナルフォトグラフィ、応用AIの境界領域で、物理世界を「見て・再構成・理解する」システムを構築しています。",
     'researchCaption': "研究領域 — 概要図",
-    'pubEmptyTitle':   "TBD"
+    'pubEmptyTitle':   "TBD",
+    'miscLabel':       "動画",
+    'miscLead':        "研究室の活動や研究を短い動画で紹介します。"
   }
 };
 
@@ -98,6 +105,7 @@ function updateContent(lang) {
   setText('navMembers',      d.navMembers);
   setText('navResearch',     d.navResearch);
   setText('navPublications', d.navPublications);
+  setText('navMisc',         d.navMisc);
 
   // Index page
   setText('newsTitle', d.newsTitle);
@@ -135,6 +143,17 @@ function updateContent(lang) {
 
   // Publications page
   setText('pubEmptyTitle', d.pubEmptyTitle);
+
+  // Misc page
+  setText('miscLabel',   d.miscLabel);
+  setText('miscLead',    d.miscLead);
+
+  // Any element with data-en / data-ja carries its own translations
+  // (used for video captions so new videos need no edits here)
+  document.querySelectorAll('[data-en]').forEach(el => {
+    const t = el.dataset[lang] || el.dataset.en;
+    if (t) el.textContent = t;
+  });
 
   // Hero overlay — sync to current slide
   updateHeroOverlay(lang);
@@ -218,6 +237,20 @@ function handleMediaContent(currentSlide) {
   }
 }
 
+/* ---------- Google Drive video embeds ----------
+   Turns a normal Drive share link (…/file/d/ID/view?usp=sharing)
+   into the embeddable player URL (…/file/d/ID/preview).        */
+function driveToEmbed(url) {
+  const m = url.match(/\/file\/d\/([^/?#]+)/) || url.match(/[?&]id=([^&#]+)/);
+  return m ? `https://drive.google.com/file/d/${m[1]}/preview` : url;
+}
+
+function initDriveEmbeds() {
+  document.querySelectorAll('iframe[data-drive-url]').forEach(f => {
+    f.src = driveToEmbed(f.dataset.driveUrl);
+  });
+}
+
 /* ---------- Mobile nav ---------- */
 function toggleMenu() {
   const navLinks = document.querySelector('.nav-links');
@@ -228,6 +261,7 @@ function toggleMenu() {
 document.addEventListener('DOMContentLoaded', function() {
   const storedLang = localStorage.getItem('currentLang') || 'en';
   switchLanguage(storedLang, null);
+  initDriveEmbeds();
 
   // Start slideshow if hero exists on this page
   if (document.getElementsByClassName('slide').length > 0) {
