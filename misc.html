@@ -60,19 +60,33 @@
             <figcaption class="reel-caption">Caption, e.g. ECCV 2026 by Hinano Shimbo</figcaption>
           </figure>
 
+          Self-hosted MP4 instead of Google Drive (recommended — no black
+          bars, no Drive button, plays like an IG reel): put the file in
+          assets/video/ and replace the whole <iframe ...></iframe> with
+            <video class="reel-video" src="assets/video/FILE.mp4#t=0.1"
+              muted loop playsinline controls preload="metadata"></video>
+          (Don't add "autoplay": the page plays one video at a time by itself.)
+
           Notes:
-          - Paste the Drive link exactly as Drive gives it
+          - Drive link: paste it exactly as Drive gives it
             (…/file/d/XXXX/view?usp=sharing). It is converted automatically.
           - In Drive, share each file as "Anyone with the link → Viewer".
           - Newest video first: add new <figure> blocks at the top.
+          - Videos that are not 9:16: set the frame shape on the
+            reel-frame div, e.g. <div class="reel-frame" style="--reel-ratio: 1080 / 1350">
           ================================================================ -->
 
           <figure class="reel">
             <div class="reel-frame">
+              <video class="reel-video" src="assets/video/eccv2026.mp4#t=0.1"
+                muted loop playsinline controls preload="metadata"
+                aria-label="ECCV 2026 by Hinano Shimbo"></video>
+              <!-- Google Drive version (shows a black strip in Drive's player):
               <iframe class="reel-video"
                 data-drive-url="https://drive.google.com/file/d/1rdRnMxOB30aoT3JMSEgwuoFLFZhpD_Xk/view?usp=sharing"
                 title="ECCV 2026 by Hinano Shimbo"
                 allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+              -->
               <span class="reel-bracket tl"></span><span class="reel-bracket tr"></span>
               <span class="reel-bracket bl"></span><span class="reel-bracket br"></span>
             </div>

@@ -251,6 +251,63 @@ function initDriveEmbeds() {
   });
 }
 
+/* ---------- Misc page videos: one plays at a time ----------
+   - The video that is mostly on screen plays (muted, looping).
+   - Scrolling away pauses it.
+   - Pressing play on another video pauses the current one.
+   - A video the visitor paused stays paused.
+   - No autoplay for visitors who prefer reduced motion.        */
+function initReels() {
+  const vids = Array.from(document.querySelectorAll('video.reel-video'));
+  if (!vids.length) return;
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const visible = new Map();   // video -> fraction on screen
+  let chosen = null;           // last video that played
+
+  const pauseQuietly = v => { v._autoPause = true; v.pause(); };
+
+  vids.forEach(v => {
+    v.addEventListener('play', () => {
+      chosen = v;
+      v._userPaused = false;
+      vids.forEach(o => { if (o !== v && !o.paused) pauseQuietly(o); });
+    });
+    v.addEventListener('pause', () => {
+      if (v._autoPause) { v._autoPause = false; return; }
+      if (!v.ended) v._userPaused = true;   // visitor pressed pause
+    });
+  });
+
+  function update() {
+    if (reduceMotion) return;
+    const onScreen = v => (visible.get(v) || 0) >= 0.6;
+
+    // Keep the current one if it's still on screen, else pick the most visible
+    let target = (chosen && onScreen(chosen)) ? chosen : null;
+    if (!target) {
+      let best = 0.6;
+      vids.forEach(v => {
+        const r = visible.get(v) || 0;
+        if (r >= best && !v._userPaused) { target = v; best = r; }
+      });
+    }
+
+    vids.forEach(v => { if (v !== target && !v.paused) pauseQuietly(v); });
+    if (target && target.paused && !target._userPaused) {
+      const p = target.play();
+      if (p && p.catch) p.catch(() => {});
+    }
+  }
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => visible.set(e.target, e.intersectionRatio));
+    update();
+  }, { threshold: [0, 0.3, 0.6, 0.8, 1] });
+
+  vids.forEach(v => io.observe(v));
+}
+
 /* ---------- Mobile nav ---------- */
 function toggleMenu() {
   const navLinks = document.querySelector('.nav-links');
@@ -262,6 +319,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const storedLang = localStorage.getItem('currentLang') || 'en';
   switchLanguage(storedLang, null);
   initDriveEmbeds();
+  initReels();
 
   // Start slideshow if hero exists on this page
   if (document.getElementsByClassName('slide').length > 0) {

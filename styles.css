@@ -804,7 +804,9 @@ section { padding: var(--space-6) 0; }
 .reel-frame {
   position: relative;
   width: 100%;
-  aspect-ratio: 9 / 16;
+  /* Default is IG Reels (9:16). Override per video in misc.html with
+     style="--reel-ratio: 4 / 5" to match the video's real shape. */
+  aspect-ratio: var(--reel-ratio, 9 / 16);
   background: var(--ink);
 }
 
@@ -816,6 +818,9 @@ section { padding: var(--space-6) 0; }
   border: 0;
   display: block;
 }
+
+/* Self-hosted MP4s always fill the frame edge to edge */
+video.reel-video { object-fit: cover; }
 
 /* Viewfinder brackets sit just outside each frame, echoing the hero */
 .reel-bracket {
