@@ -72,6 +72,8 @@
             (Don't add "autoplay": the page plays one MP4 at a time by itself.)
           - Google Drive (not recommended — black bars): use
             data-drive-url="DRIVE SHARE LINK" instead of data-youtube-url.
+          - YouTube's black strips are trimmed automatically. If a video looks
+            cut off, add style="--reel-zoom: 1" to its <iframe> to turn that off.
           - Newest video first: add new <figure> blocks at the top.
           - Videos that are not 9:16: set the frame shape on the
             reel-frame div, e.g. <div class="reel-frame" style="--reel-ratio: 16 / 9">

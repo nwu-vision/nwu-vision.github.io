@@ -819,6 +819,26 @@ section { padding: var(--space-6) 0; }
   display: block;
 }
 
+/* YouTube Shorts embeds add black strips above and below the video.
+   Enlarge the player ~10% and clip it back to the frame so the strips
+   fall outside. To turn this off for one video, add
+   style="--reel-zoom: 1" to that <iframe>.                          */
+.reel-video[data-youtube-url] {
+  --reel-zoom: 1.1;
+  right: auto;
+  bottom: auto;
+  width:  calc(100% * var(--reel-zoom));
+  height: calc(100% * var(--reel-zoom));
+  left:   calc(50% - 50% * var(--reel-zoom));
+  top:    calc(50% - 50% * var(--reel-zoom));
+  clip-path: inset(calc(50% - 50% / var(--reel-zoom)));
+}
+
+/* Fullscreen: show the whole player, no trimming */
+.reel-video:fullscreen {
+  clip-path: none;
+}
+
 /* Self-hosted MP4s always fill the frame edge to edge */
 video.reel-video { object-fit: cover; }
 
