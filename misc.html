@@ -51,41 +51,44 @@
           <figure class="reel">
             <div class="reel-frame">
               <iframe class="reel-video"
-                data-drive-url="PASTE GOOGLE DRIVE SHARE LINK HERE"
+                data-youtube-url="PASTE YOUTUBE LINK HERE"
                 title="Video title"
-                allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen loading="lazy"></iframe>
               <span class="reel-bracket tl"></span><span class="reel-bracket tr"></span>
               <span class="reel-bracket bl"></span><span class="reel-bracket br"></span>
             </div>
             <figcaption class="reel-caption">First line<br>Second line</figcaption>
           </figure>
 
-          Self-hosted MP4 instead of Google Drive (recommended — no black
-          bars, no Drive button, plays like an IG reel): put the file in
-          assets/video/ and replace the whole <iframe ...></iframe> with
-            <video class="reel-video" src="assets/video/FILE.mp4#t=0.1"
-              muted loop playsinline controls preload="metadata"></video>
-          (Don't add "autoplay": the page plays one video at a time by itself.)
-
           Notes:
-          - Drive link: paste it exactly as Drive gives it
-            (…/file/d/XXXX/view?usp=sharing). It is converted automatically.
-          - In Drive, share each file as "Anyone with the link → Viewer".
+          - YouTube link: paste it as-is (Shorts, watch or share links all work).
+            Set the video to Public or Unlisted on YouTube (not Private).
+          - Self-hosted MP4 instead: put the file in assets/video/ and replace
+            the <iframe ...></iframe> with
+              <video class="reel-video" src="assets/video/FILE.mp4#t=0.1"
+                muted loop playsinline controls preload="metadata"></video>
+            (Don't add "autoplay": the page plays one MP4 at a time by itself.)
+          - Google Drive (not recommended — black bars): use
+            data-drive-url="DRIVE SHARE LINK" instead of data-youtube-url.
           - Newest video first: add new <figure> blocks at the top.
           - Videos that are not 9:16: set the frame shape on the
-            reel-frame div, e.g. <div class="reel-frame" style="--reel-ratio: 1080 / 1350">
+            reel-frame div, e.g. <div class="reel-frame" style="--reel-ratio: 16 / 9">
           ================================================================ -->
 
           <figure class="reel">
             <div class="reel-frame">
+              <iframe class="reel-video"
+                data-youtube-url="https://youtube.com/shorts/ZagDgIS7W6Y?feature=share"
+                title="国際会議出張：ECCV 2026 @ Sweden by Hinano Shimbo"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen loading="lazy"></iframe>
+              <!-- Self-hosted version (autoplays, no YouTube branding):
               <video class="reel-video" src="assets/video/eccv2026.mp4#t=0.1"
                 muted loop playsinline controls preload="metadata"
-                aria-label="国際会議出張：ECCV 2026 by Hinano Shimbo"></video>
-              <!-- Google Drive version (shows a black strip in Drive's player):
-              <iframe class="reel-video"
-                data-drive-url="https://drive.google.com/file/d/1rdRnMxOB30aoT3JMSEgwuoFLFZhpD_Xk/view?usp=sharing"
-                title="ECCV 2026 by Hinano Shimbo"
-                allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+                aria-label="国際会議出張：ECCV 2026 @ Sweden by Hinano Shimbo"></video>
               -->
               <span class="reel-bracket tl"></span><span class="reel-bracket tr"></span>
               <span class="reel-bracket bl"></span><span class="reel-bracket br"></span>

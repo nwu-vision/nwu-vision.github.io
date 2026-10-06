@@ -249,6 +249,17 @@ function initDriveEmbeds() {
   document.querySelectorAll('iframe[data-drive-url]').forEach(f => {
     f.src = driveToEmbed(f.dataset.driveUrl);
   });
+
+  // YouTube: accepts Shorts, watch, youtu.be and share links as-is
+  document.querySelectorAll('iframe[data-youtube-url]').forEach(f => {
+    const id = youtubeId(f.dataset.youtubeUrl);
+    if (id) f.src = `https://www.youtube-nocookie.com/embed/${id}?playsinline=1&rel=0`;
+  });
+}
+
+function youtubeId(url) {
+  const m = url.match(/(?:shorts\/|embed\/|youtu\.be\/|[?&]v=)([A-Za-z0-9_-]{11})/);
+  return m ? m[1] : null;
 }
 
 /* ---------- Misc page videos: one plays at a time ----------
