@@ -13,7 +13,6 @@ const langData = {
     'navMembers':      "Members",
     'navResearch':     "Research",
     'navPublications': "Publications",
-    'navMisc':         "Misc",
     // Hero slides — meta labels sync with slide index
     'heroSlides': [
       { meta: "01 / 03 · UNDERWATER VISION" },
@@ -37,10 +36,7 @@ const langData = {
     'researchLead':    "We work at the intersection of 3D vision, computational photography, and applied AI — building systems that see, measure, and understand the physical world.",
     'researchCaption': "Research areas — overview diagram",
     // Publications page
-    'pubEmptyTitle':   "TBD",
-    // Misc page
-    'miscLabel':       "Videos",
-    'miscLead':        "Short videos about life and research in the lab."
+    'pubEmptyTitle':   "TBD"
   },
   'ja': {
     'brandName':       "コンピュータビジョン研究室",
@@ -49,7 +45,6 @@ const langData = {
     'navMembers':      "メンバー",
     'navResearch':     "研究",
     'navPublications': "業績",
-    'navMisc':         "その他",
     'heroSlides': [
       { meta: "01 / 03 · 水中ビジョン" },
       { meta: "02 / 03 · 農業デジタルツイン" },
@@ -68,9 +63,7 @@ const langData = {
     'researchLabel':   "研究内容",
     'researchLead':    "3Dビジョン、コンピュテーショナルフォトグラフィ、応用AIの境界領域で、物理世界を「見て・再構成・理解する」システムを構築しています。",
     'researchCaption': "研究領域 — 概要図",
-    'pubEmptyTitle':   "TBD",
-    'miscLabel':       "動画",
-    'miscLead':        "研究室の活動や研究を短い動画で紹介します。"
+    'pubEmptyTitle':   "TBD"
   }
 };
 
@@ -105,7 +98,6 @@ function updateContent(lang) {
   setText('navMembers',      d.navMembers);
   setText('navResearch',     d.navResearch);
   setText('navPublications', d.navPublications);
-  setText('navMisc',         d.navMisc);
 
   // Index page
   setText('newsTitle', d.newsTitle);
@@ -143,17 +135,6 @@ function updateContent(lang) {
 
   // Publications page
   setText('pubEmptyTitle', d.pubEmptyTitle);
-
-  // Misc page
-  setText('miscLabel',   d.miscLabel);
-  setText('miscLead',    d.miscLead);
-
-  // Any element with data-en / data-ja carries its own translations
-  // (used for video captions so new videos need no edits here)
-  document.querySelectorAll('[data-en]').forEach(el => {
-    const t = el.dataset[lang] || el.dataset.en;
-    if (t) el.textContent = t;
-  });
 
   // Hero overlay — sync to current slide
   updateHeroOverlay(lang);
@@ -237,88 +218,6 @@ function handleMediaContent(currentSlide) {
   }
 }
 
-/* ---------- Google Drive video embeds ----------
-   Turns a normal Drive share link (…/file/d/ID/view?usp=sharing)
-   into the embeddable player URL (…/file/d/ID/preview).        */
-function driveToEmbed(url) {
-  const m = url.match(/\/file\/d\/([^/?#]+)/) || url.match(/[?&]id=([^&#]+)/);
-  return m ? `https://drive.google.com/file/d/${m[1]}/preview` : url;
-}
-
-function initDriveEmbeds() {
-  document.querySelectorAll('iframe[data-drive-url]').forEach(f => {
-    f.src = driveToEmbed(f.dataset.driveUrl);
-  });
-
-  // YouTube: accepts Shorts, watch, youtu.be and share links as-is
-  document.querySelectorAll('iframe[data-youtube-url]').forEach(f => {
-    const id = youtubeId(f.dataset.youtubeUrl);
-    if (id) f.src = `https://www.youtube-nocookie.com/embed/${id}?playsinline=1&rel=0`;
-  });
-}
-
-function youtubeId(url) {
-  const m = url.match(/(?:shorts\/|embed\/|youtu\.be\/|[?&]v=)([A-Za-z0-9_-]{11})/);
-  return m ? m[1] : null;
-}
-
-/* ---------- Misc page videos: one plays at a time ----------
-   - The video that is mostly on screen plays (muted, looping).
-   - Scrolling away pauses it.
-   - Pressing play on another video pauses the current one.
-   - A video the visitor paused stays paused.
-   - No autoplay for visitors who prefer reduced motion.        */
-function initReels() {
-  const vids = Array.from(document.querySelectorAll('video.reel-video'));
-  if (!vids.length) return;
-
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const visible = new Map();   // video -> fraction on screen
-  let chosen = null;           // last video that played
-
-  const pauseQuietly = v => { v._autoPause = true; v.pause(); };
-
-  vids.forEach(v => {
-    v.addEventListener('play', () => {
-      chosen = v;
-      v._userPaused = false;
-      vids.forEach(o => { if (o !== v && !o.paused) pauseQuietly(o); });
-    });
-    v.addEventListener('pause', () => {
-      if (v._autoPause) { v._autoPause = false; return; }
-      if (!v.ended) v._userPaused = true;   // visitor pressed pause
-    });
-  });
-
-  function update() {
-    if (reduceMotion) return;
-    const onScreen = v => (visible.get(v) || 0) >= 0.6;
-
-    // Keep the current one if it's still on screen, else pick the most visible
-    let target = (chosen && onScreen(chosen)) ? chosen : null;
-    if (!target) {
-      let best = 0.6;
-      vids.forEach(v => {
-        const r = visible.get(v) || 0;
-        if (r >= best && !v._userPaused) { target = v; best = r; }
-      });
-    }
-
-    vids.forEach(v => { if (v !== target && !v.paused) pauseQuietly(v); });
-    if (target && target.paused && !target._userPaused) {
-      const p = target.play();
-      if (p && p.catch) p.catch(() => {});
-    }
-  }
-
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => visible.set(e.target, e.intersectionRatio));
-    update();
-  }, { threshold: [0, 0.3, 0.6, 0.8, 1] });
-
-  vids.forEach(v => io.observe(v));
-}
-
 /* ---------- Mobile nav ---------- */
 function toggleMenu() {
   const navLinks = document.querySelector('.nav-links');
@@ -329,8 +228,6 @@ function toggleMenu() {
 document.addEventListener('DOMContentLoaded', function() {
   const storedLang = localStorage.getItem('currentLang') || 'en';
   switchLanguage(storedLang, null);
-  initDriveEmbeds();
-  initReels();
 
   // Start slideshow if hero exists on this page
   if (document.getElementsByClassName('slide').length > 0) {
