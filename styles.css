@@ -858,6 +858,7 @@ section { padding: var(--space-6) 0; }
 
 /* ---------- Footer (kept blue per request) ---------- */
 footer {
+  position: relative;
   flex-shrink: 0;
   width: 100%;
   background: linear-gradient(135deg, #e0f7fa 0%, #87CEEB 100%);
@@ -871,6 +872,32 @@ footer {
 }
 
 footer p { margin: 0; }
+
+/* Instagram icon, bottom-right of the footer */
+.footer-ig {
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  line-height: 0;
+  opacity: 0.85;
+  transition: opacity 0.2s var(--ease), transform 0.2s var(--ease);
+}
+
+.footer-ig img { width: 22px; height: 22px; display: block; }
+.footer-ig:hover { opacity: 1; transform: translateY(-50%) scale(1.08); }
+
+/* Narrow screens: put it under the copyright line */
+@media (max-width: 720px) {
+  .footer-ig {
+    position: static;
+    transform: none;
+    display: inline-flex;
+    margin-top: 12px;
+  }
+  .footer-ig:hover { transform: scale(1.08); }
+}
 
 /* ---------- Page-entry animation ---------- */
 @keyframes fadeUp {
