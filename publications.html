@@ -62,33 +62,50 @@
               <span class="pub-note">(Best Paper Finalist)</span>
               <div class="pub-links">
                 <a href="#">project page</a>
+                <button class="pub-bib-toggle" type="button" aria-expanded="false">bibtex</button>
+              </div>
+              <div class="pub-bib">
+                <button class="pub-bib-copy" type="button">copy</button>
+<pre>@inproceedings{key,
+  ...
+}</pre>
               </div>
             </div>
           </li>
           =========================================================== -->
 
-          
+
 
           <li class="pub-item">
             <div class="pub-media">
-              <img src="assets/pub/plantseg3d.png" alt="Paper teaser">
+              <img src="assets/pub/plantseg3d.png" alt="Potted plant photographed against a wall, beside its 3D Gaussian reconstruction with each leaf segmented in a different color, plus two zoomed insets">
             </div>
             <div class="pub-body">
               <h3 class="pub-title">PlantSeg3D: Gaussian Plant Instance Segmentation with Geometry-aware Refinement</h3>
-              <p class="pub-authors">Hinano Shimbo, Meng-Yu Jennifer Kuo</p>
+              <p class="pub-authors">Hinano Shimbo, <span class="pub-me">Meng-Yu Jennifer Kuo</span></p>
               <p class="pub-venue">
                 European Conference on Computer Vision (ECCV) 2026 CVPPA Workshop
-                <br/>(Malmö, Sweden, September 2026)
               </p>
               <div class="pub-links">
                 <a href="https://cvppa2026.github.io/proceedings">paper</a>
                 <a href="https://drive.google.com/file/d/1W0VG_mxIAEdEptm6gSNyZMkBgF9kV2zY/view?usp=sharing">poster</a>
+                <button class="pub-bib-toggle" type="button" aria-expanded="false">bibtex</button>
               </div>
-
+              <div class="pub-bib">
+                <button class="pub-bib-copy" type="button">copy</button>
+<pre>@inproceedings{shimbo2026plantseg3d,
+  title     = {PlantSeg3D: Gaussian Plant Instance Segmentation
+               with Geometry-aware Refinement},
+  author    = {Shimbo, Hinano and Kuo, Meng-Yu Jennifer},
+  booktitle = {11th Workshop on Computer Vision in Plant
+               Phenotyping and Agriculture},
+  year      = {2026}
+}</pre>
+              </div>
             </div>
           </li>
 
-          
+
 
         </ul>
       </section>
@@ -98,8 +115,34 @@
 
   <footer>
     <p>&copy; 2025~ Meng-Yu Jennifer Kuo's Lab, Nara Women's University. All rights reserved.</p>
-    <a class="footer-ig" href="https://www.instagram.com/nwu.vision/" target="_blank" rel="noopener" aria-label="Instagram (@nwu.vision)"><img src="assets/images/instagram.png" alt="Instagram" width="22" height="22"></a>
   </footer>
+
+  <!-- BibTeX: show/hide + copy to clipboard -->
+  <script>
+    // Panels start visible in the markup, so they stay readable without JS.
+    document.querySelectorAll('.pub-bib').forEach(function (panel) {
+      panel.hidden = true;
+    });
+
+    document.querySelectorAll('.pub-bib-toggle').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var panel = btn.closest('.pub-body').querySelector('.pub-bib');
+        if (!panel) return;
+        panel.hidden = !panel.hidden;
+        btn.setAttribute('aria-expanded', String(!panel.hidden));
+      });
+    });
+
+    document.querySelectorAll('.pub-bib-copy').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var text = btn.parentElement.querySelector('pre').innerText;
+        navigator.clipboard.writeText(text).then(function () {
+          btn.textContent = 'copied';
+          setTimeout(function () { btn.textContent = 'copy'; }, 1600);
+        });
+      });
+    });
+  </script>
 
 </body>
 </html>

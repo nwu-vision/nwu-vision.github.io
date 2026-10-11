@@ -682,7 +682,7 @@ section { padding: var(--space-6) 0; }
 
 .pub-item:last-child { border-bottom: 1px solid var(--mist); }
 
-/* Teaser media */
+/* Teaser media — follows each image's own proportions, never cropped */
 .pub-media {
   position: relative;
   width: 100%;
@@ -757,6 +757,7 @@ section { padding: var(--space-6) 0; }
 .pub-links {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: var(--space-2);
   margin-top: 12px;
 }
@@ -777,6 +778,73 @@ section { padding: var(--space-6) 0; }
   border-color: var(--accent);
 }
 
+/* Collapsible BibTeX — trigger stays in the links row, panel opens below it */
+.pub-bib-toggle {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--graphite);
+  background: none;
+  padding: 3px 10px;
+  border: 1px solid var(--mist);
+  border-radius: 0;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+
+.pub-bib-toggle::after { content: ' +'; }
+.pub-bib-toggle[aria-expanded="true"]::after { content: ' −'; }
+
+.pub-bib-toggle:hover,
+.pub-bib-toggle[aria-expanded="true"] {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.pub-bib {
+  position: relative;
+  margin-top: 12px;
+  padding: 14px 44px 14px 16px;
+  border: 1px solid var(--mist);
+  background: var(--fog);
+}
+
+.pub-bib[hidden] { display: none; }
+
+.pub-bib pre {
+  margin: 0;
+  overflow-x: auto;
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.65;
+  color: var(--graphite);
+  white-space: pre;
+  tab-size: 2;
+}
+
+.pub-bib-copy {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--slate);
+  background: var(--paper);
+  border: 1px solid var(--mist);
+  padding: 2px 8px;
+  cursor: pointer;
+  transition: color 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+
+.pub-bib-copy:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
 @media (max-width: 768px) {
   .pub-item {
     grid-template-columns: 1fr;
@@ -784,8 +852,8 @@ section { padding: var(--space-6) 0; }
     padding: var(--space-3) 0;
   }
 
-  .pub-media { aspect-ratio: auto; }
   .pub-title { font-size: 17px; }
+  .pub-bib pre { font-size: 11px; }
 }
 
 /* ---------- Footer (kept blue per request) ---------- */
@@ -802,33 +870,7 @@ footer {
   letter-spacing: 0.02em;
 }
 
-footer { position: relative; }
 footer p { margin: 0; }
-
-/* Instagram icon, bottom-right of the footer */
-.footer-ig {
-  position: absolute;
-  right: 24px;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  line-height: 0;
-  opacity: 0.85;
-  transition: opacity 0.2s var(--ease), transform 0.2s var(--ease);
-}
-.footer-ig img { width: 22px; height: 22px; display: block; }
-.footer-ig:hover { opacity: 1; transform: translateY(-50%) scale(1.08); }
-
-/* Narrow screens: put it under the copyright line */
-@media (max-width: 720px) {
-  .footer-ig {
-    position: static;
-    transform: none;
-    display: inline-flex;
-    margin-top: 12px;
-  }
-  .footer-ig:hover { transform: scale(1.08); }
-}
 
 /* ---------- Page-entry animation ---------- */
 @keyframes fadeUp {
